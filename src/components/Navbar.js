@@ -42,9 +42,11 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 10, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            <a href="https://github.com/omerfdasar?tab=repositories">
+              <code style={{ textDecoration: "none" }}>{"<Omer/>"}</code>
+            </a>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

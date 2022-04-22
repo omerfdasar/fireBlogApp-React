@@ -60,8 +60,8 @@ export default function Login() {
           <Avatar
             sx={{
               m: 5,
-              width: "300px",
-              height: "200px",
+              width: "340px",
+              height: "220px",
             }}
           >
             <img src={blok} />
@@ -121,7 +121,7 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 10, mb: 2 }} />
       </Container>
     </ThemeProvider>
   );
