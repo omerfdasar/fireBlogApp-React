@@ -15,7 +15,6 @@ import blok from "../assets/blok.png";
 import { height } from "@mui/system";
 import { useState } from "react";
 
-
 function Copyright(props) {
   return (
     <Typography
@@ -35,21 +34,24 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+const controlStyles = {
+  backgroundColor: "#fbdada",
+};
+
 export default function Register() {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
-
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
   };
 
-  const [emailIsValid, setEmailIsValid] = useState();
-  const [passwordIsValid, setPasswordIsValid] = useState();
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes("@"));
+    setEmailIsValid(enteredEmail.includes("@") && enteredEmail.includes(".") && enteredEmail.trim().length > 6);
     console.log(emailIsValid);
   };
   const validatePasswordHandler = () => {
@@ -106,6 +108,11 @@ export default function Register() {
               autoFocus
               onBlur={validateEmailHandler}
               onChange={emailChangeHandler}
+              style={
+                !emailIsValid
+                  ? { backgroundColor: "#fbdada" }
+                  : { backgroundColor: "#fff" }
+              }
             />
             <TextField
               margin="normal"
@@ -118,6 +125,11 @@ export default function Register() {
               autoComplete="current-password"
               onChange={passwordChangeHandler}
               onBlur={validatePasswordHandler}
+              style={
+                !passwordIsValid
+                  ? { backgroundColor: "#fbdada" }
+                  : { backgroundColor: "#fff" }
+              }
             />
 
             <Button

@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { height } from "@mui/system";
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -24,8 +25,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/omerfdasar">
+        <code>{"<Omer/>"}</code>
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -36,6 +37,25 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+  const passwordChangeHandler = (event) => {
+    setEnteredPassword(event.target.value);
+  };
+
+  const [emailIsValid, setEmailIsValid] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
+  const validateEmailHandler = () => {
+    setEmailIsValid(enteredEmail.includes("@") && enteredEmail.includes(".") && enteredEmail.trim().length > 6);
+    console.log(emailIsValid);
+  };
+  const validatePasswordHandler = () => {
+    setPasswordIsValid(enteredPassword.trim().length > 6);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -84,6 +104,13 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onBlur={validateEmailHandler}
+              onChange={emailChangeHandler}
+              style={
+                !emailIsValid
+                  ? { backgroundColor: "#fbdada" }
+                  : { backgroundColor: "#fff" }
+              }
             />
             <TextField
               margin="normal"
@@ -94,6 +121,13 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+              style={
+                !passwordIsValid
+                  ? { backgroundColor: "#fbdada" }
+                  : { backgroundColor: "#fff" }
+              }
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
