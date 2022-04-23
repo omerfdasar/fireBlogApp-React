@@ -1,4 +1,3 @@
-import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,6 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { height } from "@mui/system";
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -24,11 +24,10 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Omer Faruk
+      <Link color="inherit" href="https://github.com/omerfdasar">
+        <code>{"<Omer/>"}</code>
       </Link>{" "}
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 }
@@ -36,9 +35,29 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const emailChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+
+  const passwordChangeHandler = (event) => {
+    setEnteredPassword(event.target.value);
+  };
+
+  const [emailIsValid, setEmailIsValid] = useState();
+  const [passwordIsValid, setPasswordIsValid] = useState();
+  const validateEmailHandler = () => {
+    setEmailIsValid(enteredEmail.includes("@"));
+    console.log(emailIsValid);
+  };
+  const validatePasswordHandler = () => {
+    setPasswordIsValid(enteredPassword.trim().length > 6);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
     console.log({
       email: data.get("email"),
       password: data.get("password"),
@@ -84,6 +103,8 @@ export default function Register() {
               name="email"
               autoComplete="email"
               autoFocus
+              onBlur={validateEmailHandler}
+              onChange={emailChangeHandler}
             />
             <TextField
               margin="normal"
@@ -94,8 +115,10 @@ export default function Register() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
             />
-            
+
             <Button
               type="submit"
               fullWidth
