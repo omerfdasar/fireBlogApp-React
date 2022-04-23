@@ -14,6 +14,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { height } from "@mui/system";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Copyright(props) {
   return (
@@ -51,12 +53,17 @@ export default function Register() {
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes("@") && enteredEmail.includes(".") && enteredEmail.trim().length > 6);
+    setEmailIsValid(
+      enteredEmail.includes("@") &&
+        enteredEmail.includes(".") &&
+        enteredEmail.trim().length > 6
+    );
     console.log(emailIsValid);
   };
   const validatePasswordHandler = () => {
     setPasswordIsValid(enteredPassword.trim().length > 6);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -65,6 +72,18 @@ export default function Register() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    console.log(emailIsValid);
+    if (emailIsValid == false || passwordIsValid == false) {
+      toast.warn(" Please enter a valid name or password", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (
@@ -113,6 +132,8 @@ export default function Register() {
                   ? { backgroundColor: "#fbdada" }
                   : { backgroundColor: "#fff" }
               }
+
+              { emailIsValid && (<p>Valid email consist of "@" and "." and minimum 6 characters</p>)  }
             />
             <TextField
               margin="normal"
