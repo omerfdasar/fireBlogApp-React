@@ -11,11 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
-const pages = ["About Me", "GITHUB"];
+import umbrella from "../assets/umbrella.png";
+import { useNavigate } from "react-router-dom";
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,16 +40,18 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="div"
-            sx={{ mr: 10, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 0, my: 0, display: { xs: "none", md: "flex" } }}
           >
-            <a href="https://github.com/omerfdasar?tab=repositories">
-              <code style={{ textDecoration: "none" }}>{"<Omer/>"}</code>
-            </a>
+            <img
+              onClick={navigate("/")}
+              width="50px"
+              src={umbrella}
+              alt="logo"
+            />
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -78,37 +81,58 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem
+                key={Math.trunc(Math.random() * 1000)}
+                onClick={handleCloseNavMenu}
+              >
+                <Typography textAlign="center">
+                  <a href="https://github.com/omerfdasar" target="_blank">
+                    GITHUBb
+                  </a>
+                </Typography>
+              </MenuItem>
+              <MenuItem
+                key={Math.trunc(Math.random() * 1000)}
+                onClick={handleCloseNavMenu}
+              >
+                <Typography textAlign="center">
+                  <a
+                    href="https://omerfdasar.github.io/myBioPageWithSASS/"
+                    target="_blank"
+                  >
+                    About ME
+                  </a>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            <code>{"<Omer/>"}</code>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Typography
+              variant="h5"
+              noWrap
+              component="div"
+              sx={{
+                my: 2,
+                mx: "auto",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <code>{"<Omer/> Blog"}</code>
+            </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                <Avatar alt="ProfilePhoto" src="https://picsum.photos/200" />
               </IconButton>
             </Tooltip>
             <Menu
