@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import umbrella from "../assets/umbrella.png";
+import { Link } from "react-router-dom";
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
@@ -33,6 +35,7 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const currentUser = { displayName: "Omer" };
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -43,7 +46,9 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 0, my: 0, display: { xs: "none", md: "flex" } }}
           >
-            <img width="50px" src={umbrella} alt="logo" />
+            <Link to={"/"}>
+              <img width="50px" src={umbrella} alt="logo" />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -80,7 +85,7 @@ const Navbar = () => {
               >
                 <Typography textAlign="center">
                   <a href="https://github.com/omerfdasar" target="_blank">
-                    GITHUBb
+                    GITHUB
                   </a>
                 </Typography>
               </MenuItem>
@@ -105,7 +110,9 @@ const Navbar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            <code>{"<Omer/>"}</code>
+            <Link to={"/dashboard"}>
+              <code>{"<Omer/>"}</code>
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Typography
@@ -122,12 +129,13 @@ const Navbar = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+          <Box sx={{ flexGrow: 0, display: "flex" }}>
+            <Tooltip title="Menu">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar alt="ProfilePhoto" src="https://picsum.photos/200" />
               </IconButton>
             </Tooltip>
+            <p>{currentUser && currentUser?.displayName}</p>
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -145,16 +153,24 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Profile</Typography>
+                <Typography textAlign="center">
+                  <Link to={"/profile"}>Profile</Link>
+                </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Account</Typography>
+                <Typography textAlign="center">
+                  <Link to={"/newblog"}>New Blog</Link>
+                </Typography>
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Dashboard</Typography>
+                <Typography textAlign="center">
+                  <Link to={"/dashboard"}>Dashboard</Link>
+                </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Logout</Typography>
+               <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">
+                  {!currentUser ? <Link to={"/login"}>Login</Link> : <Button>Logout</Button>}
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>

@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import BlogCard from "../components/BlogCard";
 
 const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+  // const [blog, setBlog] = useState([]);
 
-export default Dashboard
+  // useEffect(() => {
+  //   fetch("").then();
+  // }, []);
+
+  return (
+    <div>
+      Dashboard
+      {/* {blogs.map((blog) => {
+        <Link to={`/details/${blog.id}`} key={blog.id}>
+          <BlogCard />;
+        </Link>;
+      })} */}
+    </div>
+  );
+};
+
+export default Dashboard;

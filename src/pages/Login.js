@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { height } from "@mui/system";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -25,9 +27,9 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/omerfdasar">
+      <a href="https://github.com/omerfdasar" target="_blank">
         <code>{"<Omer/>"}</code>
-      </Link>{" "}
+      </a>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -37,6 +39,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  // states
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const emailChangeHandler = (event) => {
@@ -48,8 +51,14 @@ export default function Login() {
 
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
+
+  // functions
   const validateEmailHandler = () => {
-    setEmailIsValid(enteredEmail.includes("@") && enteredEmail.includes(".") && enteredEmail.trim().length > 6);
+    setEmailIsValid(
+      enteredEmail.includes("@") &&
+        enteredEmail.includes(".") &&
+        enteredEmail.trim().length > 6
+    );
     console.log(emailIsValid);
   };
   const validatePasswordHandler = () => {
@@ -64,7 +73,7 @@ export default function Login() {
       password: data.get("password"),
     });
   };
-
+  const navigate = useNavigate();
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -112,6 +121,17 @@ export default function Login() {
                   : { backgroundColor: "#fff" }
               }
             />
+            {!emailIsValid && (
+              <p
+                style={{
+                  textAlign: "start",
+                  fontSize: "smaller",
+                  color: "red",
+                }}
+              >
+                Valid emails consist of "@" and "." and minimum 6 characters
+              </p>
+            )}
             <TextField
               margin="normal"
               required
@@ -129,6 +149,17 @@ export default function Login() {
                   : { backgroundColor: "#fff" }
               }
             />
+            {!passwordIsValid && (
+              <p
+                style={{
+                  textAlign: "start",
+                  fontSize: "smaller",
+                  color: "red",
+                }}
+              >
+                Valid passwords consist minimum 6 characters
+              </p>
+            )}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -143,14 +174,10 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                <Link to={"/profile"}>Forgot password?</Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Link to={"/profile"}>{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
           </Box>

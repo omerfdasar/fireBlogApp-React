@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -26,19 +25,15 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/omerfdasar">
+      <a color="inherit" target="_blank" href="https://github.com/omerfdasar">
         <code>{"<Omer/>"}</code>
-      </Link>{" "}
+      </a>{" "}
       {new Date().getFullYear()}
     </Typography>
   );
 }
 
 const theme = createTheme();
-
-const controlStyles = {
-  backgroundColor: "#fbdada",
-};
 
 export default function Register() {
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -132,9 +127,18 @@ export default function Register() {
                   ? { backgroundColor: "#fbdada" }
                   : { backgroundColor: "#fff" }
               }
-
-              { emailIsValid && (<p>Valid email consist of "@" and "." and minimum 6 characters</p>)  }
             />
+            {!emailIsValid && (
+              <p
+                style={{
+                  textAlign: "start",
+                  fontSize: "smaller",
+                  color: "red",
+                }}
+              >
+                Valid emails consist of "@" and "." and minimum 6 characters
+              </p>
+            )}
             <TextField
               margin="normal"
               required
@@ -152,14 +156,32 @@ export default function Register() {
                   : { backgroundColor: "#fff" }
               }
             />
-
+            {!passwordIsValid && (
+              <p
+                style={{
+                  textAlign: "start",
+                  fontSize: "smaller",
+                  color: "red",
+                }}
+              >
+                Valid passwords consist minimum 6 characters
+              </p>
+            )}
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 1 }}
             >
               Register
+            </Button>
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 1, mb: 2 }}
+            >
+              Continue With Google
             </Button>
           </Box>
         </Box>
