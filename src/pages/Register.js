@@ -15,6 +15,8 @@ import { height } from "@mui/system";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createUser } from "../helpers/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -51,16 +53,19 @@ export default function Register() {
     setEmailIsValid(
       enteredEmail.includes("@") &&
         enteredEmail.includes(".") &&
-        enteredEmail.trim().length > 6
+        enteredEmail.trim().length > 5
     );
     console.log(emailIsValid);
   };
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setPasswordIsValid(enteredPassword.trim().length > 5);
   };
 
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    createUser(enteredEmail, enteredPassword, navigate);
     const data = new FormData(event.currentTarget);
 
     console.log({

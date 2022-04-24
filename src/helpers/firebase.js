@@ -1,14 +1,20 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBWCtl_8K8uF70Lz_8LTqFJgYAQAaD5Zus",
-  authDomain: "fire-blog-project.firebaseapp.com",
-  databaseURL: "https://fire-blog-project-default-rtdb.firebaseio.com",
-  projectId: "fire-blog-project",
-  storageBucket: "fire-blog-project.appspot.com",
-  messagingSenderId: "849184706930",
-  appId: "1:849184706930:web:38faf3427d348d9b434deb",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  databaseURL: process.env.REACT_APP_databaseURL,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
@@ -16,3 +22,35 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+
+export const createUser = async (email, password, navigate) => {
+  try {
+    let userCrediantial = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    navigate("/");
+    console.log(userCrediantial);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+export const signIn = async (email, password, navigate) => {
+  try {
+    let userCrediantial = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log(userCrediantial, "UserCrediantials");
+    navigate("/");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const logOut = () => {
+  signOut(auth);
+  toast("logged out");
+};

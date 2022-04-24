@@ -17,6 +17,7 @@ import { height } from "@mui/system";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { signIn } from "../helpers/firebase";
 
 function Copyright(props) {
   return (
@@ -57,23 +58,27 @@ export default function Login() {
     setEmailIsValid(
       enteredEmail.includes("@") &&
         enteredEmail.includes(".") &&
-        enteredEmail.trim().length > 6
+        enteredEmail.trim().length > 5
     );
     console.log(emailIsValid);
   };
   const validatePasswordHandler = () => {
-    setPasswordIsValid(enteredPassword.trim().length > 6);
+    setPasswordIsValid(enteredPassword.trim().length > 5);
   };
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    signIn(enteredEmail, enteredPassword, navigate);
+
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
   };
-  const navigate = useNavigate();
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -174,10 +179,10 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to={"/profile"}>Forgot password?</Link>
+                <Link to={"/register"}>Forgot password?</Link>
               </Grid>
               <Grid item>
-                <Link to={"/profile"}>{"Don't have an account? Sign Up"}</Link>
+                <Link to={"/register"}>{"Don't have an account? Sign Up"}</Link>
               </Grid>
             </Grid>
           </Box>

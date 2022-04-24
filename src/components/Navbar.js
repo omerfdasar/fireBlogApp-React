@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import umbrella from "../assets/umbrella.png";
 import { Link } from "react-router-dom";
+import { logOut } from "../helpers/firebase";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -167,9 +168,13 @@ const Navbar = () => {
                   <Link to={"/dashboard"}>Dashboard</Link>
                 </Typography>
               </MenuItem>
-               <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
-                  {!currentUser ? <Link to={"/login"}>Login</Link> : <Button>Logout</Button>}
+                  {!currentUser ? (
+                    <Link to={"/login"}>Login</Link>
+                  ) : (
+                    <Button onClick={() => logOut()}>Logout</Button>
+                  )}
                 </Typography>
               </MenuItem>
             </Menu>
