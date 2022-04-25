@@ -11,12 +11,25 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
+import { addBlog } from "../helpers/firebase";
 
 const NewBlog = () => {
+  const { blog, setBlog } = useContext(BlogContext);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setBlog({ ...blog, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(blog);
+    addBlog(blog);
+  };
 
   const theme = createTheme();
   return (
@@ -43,7 +56,7 @@ const NewBlog = () => {
 
           <Box
             component="form"
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -54,6 +67,8 @@ const NewBlog = () => {
               id="title"
               label="Title"
               name="title"
+              value={blog.title}
+              onChange={handleChange}
             />
 
             <TextField
@@ -64,16 +79,21 @@ const NewBlog = () => {
               label="Image URL"
               type="text"
               id="image"
+              value={blog.image}
+              onChange={handleChange}
             />
-
             <TextField
               margin="normal"
               required
               fullWidth
+              name="content"
               type="text"
               label="Content"
+              id="content"
               multiline
               rows={10}
+              value={blog.content}
+              onChange={handleChange}
             />
 
             <Button

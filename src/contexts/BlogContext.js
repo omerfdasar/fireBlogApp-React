@@ -7,12 +7,12 @@ const initialBlog = { title: "", image: "", context: "" };
 const BlogContextProvider = (props) => {
   const [blog, setBlog] = useState(initialBlog);
 
- /*  useEffect(() => {
+  /*  useEffect(() => {
     getBlog(setBlog);
   }); */
 
   return (
-    <BlogContext.Provider value={{ blog }}>
+    <BlogContext.Provider value={{ blog, setBlog }}>
       {props.children}
     </BlogContext.Provider>
   );

@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+import firebase from "./firebase";
+import { getDatabase, ref, set, push, onValue } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,6 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -84,4 +87,38 @@ export const signUpProvider = (navigate) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const addBlog = (blog) => {
+  const db = getDatabase();
+  const blogRef = ref(db, "blog");
+  const newBlogRef = push(blogRef);
+  set(newBlogRef, {
+    title: blog.title,
+    image: blog.image,
+    content: blog.content,
+  });
+};
+
+export const callData = () => {
+  const [isLoading, setIsLoading] = useState();
+  const [blogsDash, setBlogsDash] = useState();
+  useEffect(() => {
+    setIsLoading(true);
+    const db = getDatabase();
+    const blogRef = ref(db, "blog");
+
+    onValue(blogRef, (snapshot) => {
+      const data = snapshot.val();
+      const dataList = [];
+
+      // i can also use shallow copy as using spread
+      for (let id in data) {
+        dataList.push({ id, ...data[id] });
+      }
+      blogsDash(dataList);
+      setIsLoading(false);
+    });
+  }, []);
+  return { isLoading, blogsDash };
 };
