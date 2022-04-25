@@ -78,10 +78,11 @@ export default function Login() {
     signIn(enteredEmail, enteredPassword, navigate);
 
     const data = new FormData(event.currentTarget);
-    console.log({
+    const userData = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+    console.log(userData);
   };
 
   return (

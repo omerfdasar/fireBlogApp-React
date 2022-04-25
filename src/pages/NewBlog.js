@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 
 
 const NewBlog = () => {
+
   const theme = createTheme();
   return (
     <ThemeProvider theme={theme}>
