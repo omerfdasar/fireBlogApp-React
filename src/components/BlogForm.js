@@ -1,7 +1,5 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
-import CameraIcon from "@mui/icons-material/PhotoCamera";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -13,14 +11,13 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const cards = [1, 2, 3, 4, 5, 6];
 
-const theme = createTheme();
 
 export default function Album() {
+  const theme = createTheme();
   return (
     <ThemeProvider theme={theme}>
       <main>
@@ -63,3 +60,15 @@ export default function Album() {
     </ThemeProvider>
   );
 }
+
+{/* {isLoading ? (
+        <div>
+          <img src={errorGif} />
+        </div>
+      ) : blogsDash?.length === 0 ? (
+        <h1>DATA NOT FOUND</h1>
+      ) : (
+        blogsDash?.map((item, index) => {
+          return <BlogCard item={item} key={item.id} />;
+        })
+      )} */}

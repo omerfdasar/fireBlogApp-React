@@ -116,7 +116,7 @@ export const callData = () => {
       for (let id in data) {
         dataList.push({ id, ...data[id] });
       }
-      blogsDash(dataList);
+      setBlogsDash(dataList);
       setIsLoading(false);
     });
   }, []);
