@@ -17,7 +17,7 @@ import { height } from "@mui/system";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { signIn } from "../helpers/firebase";
+import { signIn, signUpProvider } from "../helpers/firebase";
 
 function Copyright(props) {
   return (
@@ -40,6 +40,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
+  const navigate = useNavigate();
+
   // states
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -54,6 +56,7 @@ export default function Login() {
   const [passwordIsValid, setPasswordIsValid] = useState(true);
 
   // functions
+
   const validateEmailHandler = () => {
     setEmailIsValid(
       enteredEmail.includes("@") &&
@@ -65,7 +68,10 @@ export default function Login() {
   const validatePasswordHandler = () => {
     setPasswordIsValid(enteredPassword.trim().length > 5);
   };
-  const navigate = useNavigate();
+
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -117,7 +123,6 @@ export default function Login() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
               onBlur={validateEmailHandler}
               onChange={emailChangeHandler}
               style={
@@ -176,6 +181,15 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
+            </Button>
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 1, mb: 2 }}
+              onClick={handleProviderLogin}
+            >
+              Continue With Google
             </Button>
             <Grid container>
               <Grid item xs>

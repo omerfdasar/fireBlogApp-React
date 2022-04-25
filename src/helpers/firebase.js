@@ -2,8 +2,12 @@ import { initializeApp } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
 
@@ -30,6 +34,9 @@ export const createUser = async (email, password, navigate) => {
       email,
       password
     );
+    updateProfile(auth.currentUser, {
+      displayName: email,
+    });
     navigate("/");
     console.log(userCrediantial);
   } catch (error) {
@@ -50,7 +57,31 @@ export const signIn = async (email, password, navigate) => {
   }
 };
 
-export const logOut = () => {
+export const logOut = (navigate) => {
   signOut(auth);
   toast("logged out");
+  navigate("/login");
+};
+
+export const userObserver = (setCurrentUser) => {
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    } else {
+      setCurrentUser(false);
+    }
+  });
+};
+
+export const signUpProvider = (navigate) => {
+  const provider = new GoogleAuthProvider();
+
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

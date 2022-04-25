@@ -13,9 +13,9 @@ const Dashboard = () => {
     <div>
       Dashboard
       {/* {blogs.map((blog) => {
-        <Link to={`/details/${blog.id}`} key={blog.id}>
+         key={blog.id}>
           <BlogCard />;
-        </Link>;
+        
       })} */}
     </div>
   );

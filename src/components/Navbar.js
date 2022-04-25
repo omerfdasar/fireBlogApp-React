@@ -12,12 +12,17 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import umbrella from "../assets/umbrella.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../helpers/firebase";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,7 +41,11 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  const currentUser = { displayName: "Omer" };
+  const logoutHandler = () => {
+    logOut(navigate);
+  };
+
+  // const currentUser = { displayName: "Omerfarukdasar@gmail.com" };
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -131,12 +140,13 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex" }}>
+            <p>{currentUser && currentUser?.displayName}</p>
             <Tooltip title="Menu">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar alt="ProfilePhoto" src="https://picsum.photos/200" />
               </IconButton>
             </Tooltip>
-            <p>{currentUser && currentUser?.displayName}</p>
+            {/* <p>{currentUser && currentUser?.displayName}</p> */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -168,15 +178,26 @@ const Navbar = () => {
                   <Link to={"/dashboard"}>Dashboard</Link>
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  {!currentUser ? (
-                    <Link to={"/login"}>Login</Link>
-                  ) : (
-                    <Button onClick={() => logOut()}>Logout</Button>
-                  )}
-                </Typography>
-              </MenuItem>
+              {!currentUser ? (
+                <div>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link to={"/login"}>Login</Link>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link to={"/register"}>Register</Link>
+                    </Typography>
+                  </MenuItem>
+                </div>
+              ) : (
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">
+                    <Button onClick={logoutHandler}>Logout</Button>
+                  </Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>
