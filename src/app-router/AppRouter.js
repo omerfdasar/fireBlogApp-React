@@ -1,6 +1,7 @@
 import { Details } from "@mui/icons-material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Album from "../components/BlogForm";
 import Navbar from "../components/Navbar";
 import About from "../pages/About";
 import Dashboard from "../pages/Dashboard";
@@ -23,6 +24,7 @@ const AppRouter = () => {
         <Route path="/newblog" element={<NewBlog />} />
         {/* <Route path="/details/:id" element={<Details />} /> */}
         <Route path="/register" element={<Register />} />
+        {/* <Route path="/" element={<Album />} /> */}
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </Router>

@@ -120,7 +120,7 @@ const Navbar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            <Link to={"/dashboard"}>
+            <Link to={"/"}>
               <code>{"<Omer/>"}</code>
             </Link>
           </Typography>
@@ -135,7 +135,9 @@ const Navbar = () => {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              <code>{"<Omer/> Blog"}</code>
+              <Link to={"/"}>
+                <code>{"<Omer/> Blog"}</code>
+              </Link>
             </Typography>
           </Box>
 

@@ -56,7 +56,6 @@ export default function Login() {
   const [passwordIsValid, setPasswordIsValid] = useState(true);
 
   // functions
-
   const validateEmailHandler = () => {
     setEmailIsValid(
       enteredEmail.includes("@") &&

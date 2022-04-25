@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      Dashboard
+      <h1>Dashboard</h1>
       {/* {blogs.map((blog) => {
          key={blog.id}>
           <BlogCard />;
