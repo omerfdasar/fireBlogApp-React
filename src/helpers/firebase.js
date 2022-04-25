@@ -62,7 +62,7 @@ export const signIn = async (email, password, navigate) => {
 
 export const logOut = (navigate) => {
   signOut(auth);
-  toast("logged out");
+  toast.success("logged out");
   navigate("/login");
 };
 

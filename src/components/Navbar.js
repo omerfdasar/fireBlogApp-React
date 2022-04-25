@@ -177,7 +177,7 @@ const Navbar = () => {
               </MenuItem>
               <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
-                  <Link to={"/dashboard"}>Dashboard</Link>
+                  <Link to={"/"}>Dashboard</Link>
                 </Typography>
               </MenuItem>
               {!currentUser ? (

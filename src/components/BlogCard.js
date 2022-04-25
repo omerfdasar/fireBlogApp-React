@@ -37,8 +37,12 @@ const BlogCard = ({ item }) => {
     >
       <CardMedia
         component="img"
-        image="https://source.unsplash.com/random"
+        sx={{
+          cursor: "pointer",
+        }}
+        image={"https://source.unsplash.com/random"}
         alt="random"
+        onClick={validationHandler}
       />
       <CardContent sx={{ flexGrow: 1 }}>
         <Typography gutterBottom variant="h5" component="h2">
@@ -46,8 +50,15 @@ const BlogCard = ({ item }) => {
         </Typography>
         <Typography>{item.content}.</Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">View</Button>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Button size="small" onClick={validationHandler}>
+          View
+        </Button>
         <Button size="small">Edit</Button>
       </CardActions>
     </Card>

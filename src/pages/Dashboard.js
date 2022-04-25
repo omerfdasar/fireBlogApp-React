@@ -8,9 +8,7 @@ import { Container, Grid } from "@mui/material";
 const Dashboard = () => {
   // const [blog, setBlog] = useState([]);
   const { isLoading, blogsDash } = callData();
-  // useEffect(() => {
-  //   fetch("").then();
-  // }, []);
+ 
   const theme = createTheme();
 
   return (
@@ -25,12 +23,11 @@ const Dashboard = () => {
       ) : (
         <ThemeProvider theme={theme}>
           <main>
-            <h1 style={{ textAlign: "center" }}>CARDS</h1>
             <Container sx={{ py: 0 }} maxWidth="xlg">
               <Grid container spacing={10} sx={{ px: 5 }}>
                 {blogsDash?.map((item, index) => (
                   <Grid item key={item.id} xs={12} sm={4} md={3}>
-                    <BlogCard item={item} key={item.id} />;
+                    <BlogCard item={item} key={item.id} />
                   </Grid>
                 ))}
               </Grid>
@@ -40,6 +37,8 @@ const Dashboard = () => {
       )}
     </div>
   );
+
+
 };
 
 export default Dashboard;
