@@ -10,3 +10,8 @@ h1 {
   align-self: center;
   justify-content: center;
 }
+.IconMail{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}

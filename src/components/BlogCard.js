@@ -12,21 +12,21 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
 import { deleteBlog } from "../helpers/firebase";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
   const { editHandler } = useContext(BlogContext);
 
   const navigate = useNavigate();
-  let id = item.id;
-  console.log(id);
   const validationHandler = () => {
     currentUser
-      ? navigate(`/details/${id}`, { state: { item } })
+      ? navigate(`/details/${item.id}`, { state: { item } })
       : toast.warning("Please log in to see details");
   };
 
-  console.log(item, "Blogcard14");
+  // console.log(item, "Blogcard14");
+  console.log(currentUser);
   return (
     <Card
       sx={{
@@ -50,6 +50,12 @@ const BlogCard = ({ item }) => {
         </Typography>
         <Typography>{item.content}.</Typography>
       </CardContent>
+      <Typography gutterBottom variant="h5" component="h2">
+        <div className="IconMail">
+          <AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />
+          {currentUser.email}
+        </div>
+      </Typography>
     </Card>
   );
 };
