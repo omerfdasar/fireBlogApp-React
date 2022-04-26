@@ -2,6 +2,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
-h1{
+h1 {
   text-align: center;
+}
+.error {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }

@@ -1,4 +1,3 @@
-import { Details } from "@mui/icons-material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Album from "../components/BlogForm";
@@ -10,6 +9,7 @@ import NewBlog from "../pages/NewBlog";
 import NotFound from "../pages/NotFound";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
+import Details from "../pages/Details";
 
 const AppRouter = () => {
   return (

@@ -10,17 +10,22 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
+import { BlogContext } from "../contexts/BlogContext";
+import { deleteBlog } from "../helpers/firebase";
 
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
+  const { editHandler } = useContext(BlogContext);
+
   const navigate = useNavigate();
   let id = item.id;
   console.log(id);
   const validationHandler = () => {
     currentUser
-      ? navigate("/details/" + id)
+      ? navigate(`/details/${id}`, { state: { item } })
       : toast.warning("Please log in to see details");
   };
+
   console.log(item, "Blogcard14");
   return (
     <Card
@@ -45,17 +50,6 @@ const BlogCard = ({ item }) => {
         </Typography>
         <Typography>{item.content}.</Typography>
       </CardContent>
-      <CardActions
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Button size="small" onClick={validationHandler}>
-          View
-        </Button>
-        <Button size="small">Edit</Button>
-      </CardActions>
     </Card>
   );
 };

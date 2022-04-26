@@ -1,6 +1,14 @@
 import { initializeApp } from "firebase/app";
 import firebase from "./firebase";
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  push,
+  onValue,
+  remove,
+  update,
+} from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -121,4 +129,18 @@ export const callData = () => {
     });
   }, []);
   return { isLoading, blogsDash };
+};
+
+export const deleteBlog = (id) => {
+  const db = getDatabase();
+  const blogRef = ref(db, "blog");
+
+  remove(ref(db, "blog/" + id));
+};
+
+export const editBlog = (blog) => {
+  const db = getDatabase();
+  const updates = {};
+  updates["blog/" + blog.id] = blog;
+  return update(ref(db), updates);
 };

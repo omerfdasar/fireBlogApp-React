@@ -8,14 +8,14 @@ import { Container, Grid } from "@mui/material";
 const Dashboard = () => {
   // const [blog, setBlog] = useState([]);
   const { isLoading, blogsDash } = callData();
- 
+  console.log(blogsDash);
   const theme = createTheme();
 
   return (
     <div>
       <h1>Dashboard</h1>
       {isLoading ? (
-        <div>
+        <div className="error">
           <img src={errorGif} />
         </div>
       ) : blogsDash?.length === 0 ? (
@@ -26,7 +26,7 @@ const Dashboard = () => {
             <Container sx={{ py: 0 }} maxWidth="xlg">
               <Grid container spacing={10} sx={{ px: 5 }}>
                 {blogsDash?.map((item, index) => (
-                  <Grid item key={item.id} xs={12} sm={4} md={3}>
+                  <Grid item key={item.id} xs={12} sm={6} md={4}>
                     <BlogCard item={item} key={item.id} />
                   </Grid>
                 ))}
@@ -37,8 +37,6 @@ const Dashboard = () => {
       )}
     </div>
   );
-
-
 };
 
 export default Dashboard;

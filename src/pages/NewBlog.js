@@ -15,7 +15,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
-import { addBlog } from "../helpers/firebase";
+import { addBlog, editBlog } from "../helpers/firebase";
 
 const NewBlog = () => {
   const { blog, setBlog } = useContext(BlogContext);
@@ -28,7 +28,12 @@ const NewBlog = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(blog);
-    addBlog(blog);
+
+    if (blog.id) {
+      editBlog(blog);
+    } else {
+      addBlog(blog);
+    }
   };
 
   const theme = createTheme();

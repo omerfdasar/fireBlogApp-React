@@ -7,6 +7,10 @@ const initialBlog = { title: "", image: "", context: "" };
 const BlogContextProvider = (props) => {
   const [blog, setBlog] = useState(initialBlog);
 
+  const editHandler = (id, title, image, content) => {
+    navigate("/newblog");
+    setBlog(id, title, image, content);
+  };
   /*  useEffect(() => {
     getBlog(setBlog);
   }); */
