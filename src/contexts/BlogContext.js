@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const BlogContext = createContext();
 
-const initialBlog = { title: "", image: "", context: "" };
+const initialBlog = { title: "", image: "", context: "", user: "" };
 
 const BlogContextProvider = (props) => {
   const [blog, setBlog] = useState(initialBlog);

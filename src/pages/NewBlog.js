@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { useContext, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
@@ -19,11 +20,14 @@ import { addBlog, editBlog } from "../helpers/firebase";
 
 const NewBlog = () => {
   const { blog, setBlog } = useContext(BlogContext);
-
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setBlog({ ...blog, [name]: value });
+    const { email } = currentUser;
+
+    setBlog({ ...blog, [name]: value, user: email });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +37,8 @@ const NewBlog = () => {
       editBlog(blog);
     } else {
       addBlog(blog);
+      setBlog(initialValues);
+      navigate("/");
     }
   };
 

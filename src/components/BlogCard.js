@@ -24,9 +24,8 @@ const BlogCard = ({ item }) => {
       ? navigate(`/details/${item.id}`, { state: { item } })
       : toast.warning("Please log in to see details");
   };
-
-  // console.log(item, "Blogcard14");
-  console.log(currentUser);
+  // console.log(item);
+  // console.log(currentUser);
   return (
     <Card
       sx={{
@@ -52,8 +51,8 @@ const BlogCard = ({ item }) => {
       </CardContent>
       <Typography gutterBottom variant="h5" component="h2">
         <div className="IconMail">
-          <AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />
-          {currentUser.email}
+          {<AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />}
+          {item.user}
         </div>
       </Typography>
     </Card>

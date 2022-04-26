@@ -105,6 +105,7 @@ export const addBlog = (blog) => {
     title: blog.title,
     image: blog.image,
     content: blog.content,
+    user: blog.user,
   });
 };
 
