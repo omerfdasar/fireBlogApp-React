@@ -165,22 +165,30 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to={"/profile"}>Profile</Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to={"/newblog"}>New Blog</Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">
-                  <Link to={"/"}>Dashboard</Link>
-                </Typography>
-              </MenuItem>
-              {!currentUser ? (
+              {currentUser ? (
+                <div>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link to={"/profile"}>Profile</Link>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link to={"/newblog"}>New Blog</Link>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Link to={"/"}>Dashboard</Link>
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">
+                      <Button onClick={logoutHandler}>Logout</Button>
+                    </Typography>
+                  </MenuItem>
+                </div>
+              ) : (
                 <div>
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">
@@ -193,12 +201,6 @@ const Navbar = () => {
                     </Typography>
                   </MenuItem>
                 </div>
-              ) : (
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    <Button onClick={logoutHandler}>Logout</Button>
-                  </Typography>
-                </MenuItem>
               )}
             </Menu>
           </Box>

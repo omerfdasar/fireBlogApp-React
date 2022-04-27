@@ -9,14 +9,15 @@ import { Button, CardActionArea, CardActions, Container } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext";
 import { callData, deleteBlog } from "../helpers/firebase";
 
-const Details = () => {
+const Details = ({ item }) => {
   const location = useLocation();
   const params = useParams();
   const navigate = useNavigate();
+  console.log(item);
 
   const eachBlog = location.state.item;
   // console.log(params.id, "paa");
-  console.log(eachBlog);
+  // console.log(eachBlog);
 
   const { currentUser } = React.useContext(AuthContext);
 
@@ -26,6 +27,10 @@ const Details = () => {
   const deleteHandler = () => {
     deleteBlog(params.id);
     navigate("/");
+  };
+
+  const editHandler = () => {
+    navigate("/details/" + params.id);
   };
   return (
     <Container sx={{ display: "flex", justifyContent: "center", mt: 10 }}>
@@ -52,7 +57,9 @@ const Details = () => {
             justifyContent: "center",
           }}
         >
-          <Button size="small" /* onClick={editHandler} */>Edit</Button>
+          <Button size="small" onClick={editHandler}>
+            Edit
+          </Button>
           <Button size="small" onClick={deleteHandler}>
             Delete
           </Button>

@@ -8,7 +8,7 @@ import { Container, Grid } from "@mui/material";
 const Dashboard = () => {
   // const [blog, setBlog] = useState([]);
   const { isLoading, blogsDash } = callData();
-  console.log(blogsDash);
+  // console.log(blogsDash);
   const theme = createTheme();
 
   return (
@@ -23,10 +23,10 @@ const Dashboard = () => {
       ) : (
         <ThemeProvider theme={theme}>
           <main>
-            <Container sx={{ py: 0 }} maxWidth="xlg">
-              <Grid container spacing={10} sx={{ px: 5 }}>
-                {blogsDash?.map((item, index) => (
-                  <Grid item key={item.id} xs={12} sm={6} md={4}>
+            <Container sx={{ py: 5 }} maxWidth="xlg" >
+              <Grid container spacing={8} sx={{ px: 4 }} columnSpacing={{ xs: 1, sm: 6, md: 8 }}>
+                {blogsDash?.map((item) => (
+                  <Grid item key={item.id} xs={12} sm={6} md={3}>
                     <BlogCard item={item} key={item.id} />
                   </Grid>
                 ))}

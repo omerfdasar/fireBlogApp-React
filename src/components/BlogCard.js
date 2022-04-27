@@ -14,11 +14,12 @@ import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
 import { deleteBlog } from "../helpers/firebase";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import chicken from "../assets/16627.jpg";
 
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
   const { editHandler } = useContext(BlogContext);
-
+  console.log(currentUser);
   const navigate = useNavigate();
   const validationHandler = () => {
     currentUser
@@ -37,17 +38,18 @@ const BlogCard = ({ item }) => {
     >
       <CardActionArea onClick={validationHandler}>
         <CardMedia
+          sx={{ width: 1 }}
           component="img"
-          sx={{
-            cursor: "pointer",
-          }}
-          image={"https://source.unsplash.com/random"}
-          alt="random"
+          // height="70px"
+          image={chicken}
+          // defaultValue={chicken}
+          alt="green iguana"
         />
         <CardContent
           sx={{
             flexGrow: 1,
             backgroundColor: "#E7E6F5",
+            minHeight: 150,
             maxHeight: 200,
             overflow: "hidden",
           }}
