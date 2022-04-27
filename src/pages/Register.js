@@ -35,9 +35,8 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
-
 export default function Register() {
+  const theme = createTheme();
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const emailChangeHandler = (event) => {
@@ -60,7 +59,9 @@ export default function Register() {
   const validatePasswordHandler = () => {
     setPasswordIsValid(enteredPassword.trim().length > 5);
   };
-
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -185,6 +186,7 @@ export default function Register() {
               fullWidth
               variant="contained"
               sx={{ mt: 1, mb: 2 }}
+              onClick={handleProviderLogin}
             >
               Continue With Google
             </Button>

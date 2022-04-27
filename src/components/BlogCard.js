@@ -19,7 +19,6 @@ import chicken from "../assets/16627.jpg";
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
   const { editHandler } = useContext(BlogContext);
-  console.log(currentUser);
   const navigate = useNavigate();
   const validationHandler = () => {
     currentUser

@@ -37,7 +37,6 @@ const NewBlog = () => {
       editBlog(blog);
     } else {
       addBlog(blog);
-      setBlog(initialValues);
       navigate("/");
     }
   };

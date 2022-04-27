@@ -170,10 +170,7 @@ export default function Login() {
                 Valid passwords consist minimum 6 characters
               </p>
             )}
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth

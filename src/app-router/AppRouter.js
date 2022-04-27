@@ -10,17 +10,23 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import Details from "../pages/Details";
 import PrivateRouter from "./PrivateRouter";
-
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import LoggedInRouter from "../app-router/LoggedInRouter";
 const AppRouter = () => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <Router>
       <Navbar />
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route element={<LoggedInRouter />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route element={<PrivateRouter />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/newblog" element={<NewBlog />} />
