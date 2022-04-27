@@ -9,7 +9,7 @@ const BlogContextProvider = (props) => {
 
   const editHandler = (id, title, image, content) => {
     navigate("/newblog");
-    setBlog(id, title, image, content);
+    setBlog(id, title, image, content, user);
   };
   /*  useEffect(() => {
     getBlog(setBlog);

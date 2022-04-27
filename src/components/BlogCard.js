@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { CardActionArea } from "@mui/material";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -34,27 +35,35 @@ const BlogCard = ({ item }) => {
         flexDirection: "column",
       }}
     >
-      <CardMedia
-        component="img"
-        sx={{
-          cursor: "pointer",
-        }}
-        image={"https://source.unsplash.com/random"}
-        alt="random"
-        onClick={validationHandler}
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardActionArea onClick={validationHandler}>
+        <CardMedia
+          component="img"
+          sx={{
+            cursor: "pointer",
+          }}
+          image={"https://source.unsplash.com/random"}
+          alt="random"
+        />
+        <CardContent
+          sx={{
+            flexGrow: 1,
+            backgroundColor: "#E7E6F5",
+            maxHeight: 200,
+            overflow: "hidden",
+          }}
+        >
+          <Typography gutterBottom variant="h5" component="h2">
+            {item.title}
+          </Typography>
+          <Typography>{item.content}.</Typography>
+        </CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {item.title}
+          <div className="IconMail">
+            {<AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />}
+            {item.user}
+          </div>
         </Typography>
-        <Typography>{item.content}.</Typography>
-      </CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
-        <div className="IconMail">
-          {<AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />}
-          {item.user}
-        </div>
-      </Typography>
+      </CardActionArea>
     </Card>
   );
 };
