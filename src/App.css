@@ -10,8 +10,9 @@ h1 {
   align-self: center;
   justify-content: center;
 }
-.IconMail{
+.IconMail {
   display: flex;
   align-self: center;
-  justify-content: center;
+  justify-content: start;
+  overflow-inline: clip;
 }

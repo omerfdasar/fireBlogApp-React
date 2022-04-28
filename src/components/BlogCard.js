@@ -50,17 +50,25 @@ const BlogCard = ({ item }) => {
             backgroundColor: "#E7E6F5",
             minHeight: 150,
             maxHeight: 200,
+
             overflow: "hidden",
+            // textOverflow: "ellipsis"
           }}
         >
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            className="title"
+            style={{ color: "cornflowerblue" }}
+          >
             {item.title}
           </Typography>
           <Typography>{item.content}.</Typography>
         </CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant="h6" component="h3">
           <div className="IconMail">
-            {<AccountCircleIcon sx={{ mx: 1, alignSelf: "center" }} />}
+            {<AccountCircleIcon sx={{ mx: 3 / 5, alignSelf: "center" }} />}
             {item.user}
           </div>
         </Typography>
