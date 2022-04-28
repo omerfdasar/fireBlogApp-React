@@ -15,6 +15,9 @@ import { BlogContext } from "../contexts/BlogContext";
 import { deleteBlog } from "../helpers/firebase";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import chicken from "../assets/16627.jpg";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddCommentIcon from "@mui/icons-material/AddComment";
+import { pink } from "@mui/material/colors";
 
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
@@ -25,19 +28,27 @@ const BlogCard = ({ item }) => {
       ? navigate(`/details/${item.id}`, { state: { item } })
       : toast.warning("Please log in to see details");
   };
+  const truncateOverview = (string, maxLength) => {
+    if (!string) return null;
+    if (string.length <= maxLength) return string;
+    return `${string.substring(0, maxLength)} ...`;
+  };
   // console.log(item);
   // console.log(currentUser);
   return (
     <Card
       sx={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
+        // height: "100%",
+        // display: "flex",
+        // flexDirection: "column",
+        width: 345,
+        m: 5,
+        maxHeight: 700,
       }}
     >
       <CardActionArea onClick={validationHandler}>
         <CardMedia
-          sx={{ width: 1 }}
+          sx={{ /* width: 1, */ height: "250" }}
           component="img"
           // height="70px"
           image={chicken}
@@ -48,13 +59,15 @@ const BlogCard = ({ item }) => {
           sx={{
             flexGrow: 1,
             backgroundColor: "#E7E6F5",
-            minHeight: 150,
-            maxHeight: 200,
-
-            overflow: "hidden",
-            // textOverflow: "ellipsis"
+            height: 300,
           }}
         >
+          <Typography variant="overline" align="left">
+            <div className="IconMail">
+              {/* <AccountCircleIcon sx={{ mx: 3 / 5, alignSelf: "center" }} /> */}
+              <i>Author : {item?.user}</i>
+            </div>
+          </Typography>
           <Typography
             gutterBottom
             variant="h5"
@@ -64,14 +77,28 @@ const BlogCard = ({ item }) => {
           >
             {item.title}
           </Typography>
-          <Typography>{item.content}.</Typography>
+          <Typography>
+            {truncateOverview(item?.content, 160) ??
+              "It follows an inquiry into Passenger Play, which allowed games to be played while a car was moving."}
+          </Typography>
+          <Typography variant="subtitle1" color="primary">
+            Continue reading...
+          </Typography>
+          <CardActions
+            style={{
+              justifyContent: "center",
+              alignSelf: "end",
+              alignContent: "flex-end",
+            }}
+          >
+            <Button>
+              <FavoriteIcon sx={{ color: pink[500] }} />
+            </Button>
+            <Button>
+              <AddCommentIcon color="action" />
+            </Button>
+          </CardActions>
         </CardContent>
-        <Typography gutterBottom variant="h6" component="h3">
-          <div className="IconMail">
-            {<AccountCircleIcon sx={{ mx: 3 / 5, alignSelf: "center" }} />}
-            {item.user}
-          </div>
-        </Typography>
       </CardActionArea>
     </Card>
   );

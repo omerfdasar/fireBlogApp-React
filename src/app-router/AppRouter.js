@@ -13,6 +13,7 @@ import PrivateRouter from "./PrivateRouter";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import LoggedInRouter from "../app-router/LoggedInRouter";
+import FeaturedPost from "../components/FeaturedPost.js";
 const AppRouter = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -32,7 +33,7 @@ const AppRouter = () => {
           <Route path="/newblog" element={<NewBlog />} />
           <Route path="/details/:id" element={<Details />} />
         </Route>
-
+        {/* <Route path="/" element={<FeaturedPost />} /> */}
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </Router>

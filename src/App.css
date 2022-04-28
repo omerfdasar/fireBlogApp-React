@@ -14,5 +14,4 @@ h1 {
   display: flex;
   align-self: center;
   justify-content: start;
-  overflow-inline: clip;
 }
