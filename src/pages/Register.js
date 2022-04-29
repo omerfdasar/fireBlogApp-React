@@ -15,7 +15,7 @@ import { height } from "@mui/system";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { createUser } from "../helpers/firebase";
+import { createUser, signUpProvider } from "../helpers/firebase";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
