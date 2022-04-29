@@ -4,15 +4,7 @@ import errorGif from "../assets/loading.gif";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import {
-  getDatabase,
-  ref,
-  set,
-  push,
-  onValue,
-  remove,
-  update,
-} from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 const Dashboard = () => {
   // console.log(blogsDash);
   const theme = createTheme();
@@ -38,8 +30,6 @@ const Dashboard = () => {
     });
   }, []);
 
-  // return { isLoading, blogsDash };
-
   // const { isLoading, blogsDash } = callData();
   return (
     <div>
@@ -48,7 +38,7 @@ const Dashboard = () => {
       </Typography>
       {isLoading ? (
         <div className="error">
-          <img src={errorGif} />
+          <img src={errorGif} alt="loadingGif" />
         </div>
       ) : blogsDash?.length === 0 ? (
         <h1>DATA NOT FOUND</h1>

@@ -2,18 +2,13 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
-import { height } from "@mui/system";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createUser, signUpProvider } from "../helpers/firebase";
 import { useNavigate } from "react-router-dom";
@@ -74,7 +69,7 @@ export default function Register() {
       password: data.get("password"),
     });
     console.log(emailIsValid);
-    if (emailIsValid == false || passwordIsValid == false) {
+    if (emailIsValid === false || passwordIsValid === false) {
       toast.warn(" Please enter a valid name or password", {
         position: "top-right",
         autoClose: 5000,
@@ -106,7 +101,7 @@ export default function Register() {
               height: "220px",
             }}
           >
-            <img src={blok} />
+            <img src={blok} alt="blokImg" />
           </Avatar>
           <Typography component="h1" variant="h5">
             Register
@@ -137,7 +132,7 @@ export default function Register() {
             {!emailIsValid && (
               <p
                 style={{
-                  textAlign: "start",
+                  textAlign: "flex-start",
                   fontSize: "smaller",
                   color: "red",
                 }}
@@ -165,7 +160,7 @@ export default function Register() {
             {!passwordIsValid && (
               <p
                 style={{
-                  textAlign: "start",
+                  textAlign: "flex-start",
                   fontSize: "smaller",
                   color: "red",
                 }}

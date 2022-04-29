@@ -10,14 +10,10 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import Details from "../pages/Details";
 import PrivateRouter from "./PrivateRouter";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
 import LoggedInRouter from "../app-router/LoggedInRouter";
 import UpdateBlog from "../pages/UpdateBlog";
 import Footer from "../components/Footer.js";
 const AppRouter = () => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <Router>
       <Navbar />

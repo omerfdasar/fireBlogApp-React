@@ -3,20 +3,15 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
-import { addBlog, editBlog } from "../helpers/firebase";
+import { BlogContext } from "../contexts/BlogContext";
+import { addBlog } from "../helpers/firebase";
 import { toast } from "react-toastify";
 
 const NewBlog = () => {
@@ -60,7 +55,7 @@ const NewBlog = () => {
               height: "220px",
             }}
           >
-            <img src={blok} />
+            <img src={blok} alt="blokImage" />
           </Avatar>
 
           <Box

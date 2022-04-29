@@ -1,11 +1,9 @@
 import { initializeApp } from "firebase/app";
-import firebase from "./firebase";
 import {
   getDatabase,
   ref,
   set,
   push,
-  onValue,
   remove,
   update,
 } from "firebase/database";
@@ -20,7 +18,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -134,7 +131,7 @@ export const addBlog = (blog) => {
 
 export const deleteBlog = (id) => {
   const db = getDatabase();
-  const blogRef = ref(db, "blog");
+  // const blogRef = ref(db, "blog");
 
   remove(ref(db, "blog/" + id));
 };

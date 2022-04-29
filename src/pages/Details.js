@@ -1,21 +1,10 @@
-import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
+
 import Typography from "@mui/material/Typography";
-import {
-  Box,
-  Button,
-  CardActionArea,
-  CardActions,
-  Container,
-  CssBaseline,
-  Stack,
-} from "@mui/material";
+import { Box, Button, Container, CssBaseline, Stack } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext";
-import { callData, deleteBlog } from "../helpers/firebase";
+import { deleteBlog } from "../helpers/firebase";
 import loadingGif from "../assets/loading.gif";
 import chicken from "../assets/16627.jpg";
 const Details = ({ item }) => {
@@ -82,7 +71,7 @@ const Details = ({ item }) => {
             {eachBlog.content}
           </Typography>
 
-          {currentUser.displayName == eachBlog.user && (
+          {currentUser.displayName === eachBlog.user && (
             <Stack
               sx={{ pt: 4 }}
               direction="row"

@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../helpers/firebase";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { deepOrange, green, yellow } from "@mui/material/colors";
+import { green } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();

@@ -12,8 +12,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
 import { BlogContext } from "../contexts/BlogContext";
-import { deleteBlog } from "../helpers/firebase";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import chicken from "../assets/16627.jpg";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCommentIcon from "@mui/icons-material/AddComment";
@@ -21,7 +19,6 @@ import { pink } from "@mui/material/colors";
 
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
-  const { editHandler } = useContext(BlogContext);
   const navigate = useNavigate();
   const validationHandler = () => {
     currentUser
