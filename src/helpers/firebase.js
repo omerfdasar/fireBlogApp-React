@@ -109,7 +109,7 @@ export const addBlog = (blog) => {
   });
 };
 
-export const callData = () => {
+/* export const callData = () => {
   const [isLoading, setIsLoading] = useState();
   const [blogsDash, setBlogsDash] = useState();
   useEffect(() => {
@@ -130,7 +130,7 @@ export const callData = () => {
     });
   }, []);
   return { isLoading, blogsDash };
-};
+}; */
 
 export const deleteBlog = (id) => {
   const db = getDatabase();
