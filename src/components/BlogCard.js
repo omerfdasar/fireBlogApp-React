@@ -52,12 +52,14 @@ const BlogCard = ({ item }) => {
     >
       <CardActionArea onClick={validationHandler}>
         <CardMedia
-          sx={{ /* width: 1, */ height: "250" }}
+          sx={{ /* width: 1, */ minHeight: 250, maxHeight: 320 }}
           component="img"
           // height="70px"
-          image={chicken}
-          // defaultValue={chicken}
-          alt="green iguana"
+          image={item.image}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = chicken;
+          }}
         />
         <CardContent
           sx={{

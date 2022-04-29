@@ -56,7 +56,7 @@ const Details = ({ item }) => {
             {eachBlog.title}
           </Typography>
           <img
-            src="https://source.unsplash.com/random"
+            src={eachBlog.image}
             alt="headerImage"
             style={{
               width: "100%",
