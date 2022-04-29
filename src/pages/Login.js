@@ -23,7 +23,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <a href="https://github.com/omerfdasar" target="_blank">
+      <a href="https://github.com/omerfdasar" target="_blank" rel="noreferrer">
         <code>{"<Omer/>"}</code>
       </a>{" "}
       {new Date().getFullYear()}
@@ -99,7 +99,7 @@ export default function Login() {
               height: "220px",
             }}
           >
-            <img src={blok} />
+            <img src={blok} alt="blogImage" />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in

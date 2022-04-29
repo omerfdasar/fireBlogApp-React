@@ -11,7 +11,6 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../contexts/AuthContext";
-import { BlogContext } from "../contexts/BlogContext";
 import chicken from "../assets/16627.jpg";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCommentIcon from "@mui/icons-material/AddComment";

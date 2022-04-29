@@ -92,7 +92,7 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu}
               >
                 <Typography textAlign="center">
-                  <a href="https://github.com/omerfdasar" target="_blank">
+                  <a href="https://github.com/omerfdasar" target="_blank" rel="noreferrer">
                     GITHUB
                   </a>
                 </Typography>
@@ -105,6 +105,7 @@ const Navbar = () => {
                   <a
                     href="https://omerfdasar.github.io/myBioPageWithSASS/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     About ME
                   </a>

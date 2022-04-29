@@ -24,7 +24,7 @@ const UpdateBlog = () => {
 
   React.useEffect(() => {
     setBlog(location.state.eachBlog);
-  }, [location.state.eachBlog]);
+  }, [location.state.eachBlog, setBlog]);
   console.log(willUpdatedItem, "willUpdatedItem");
   // {eachBlog} = location.state;
   // console.log(location.state.eachBlog);

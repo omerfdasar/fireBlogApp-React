@@ -22,7 +22,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <a color="inherit" target="_blank" href="https://github.com/omerfdasar">
+      <a color="inherit" target="_blank" href="https://github.com/omerfdasar" rel="noreferrer">
         <code>{"<Omer/>"}</code>
       </a>{" "}
       {new Date().getFullYear()}

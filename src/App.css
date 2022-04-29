@@ -11,5 +11,5 @@ a {
 .IconMail {
   display: flex;
   align-self: center;
-  justify-content: start;
+  justify-content: flex-start;
 }
