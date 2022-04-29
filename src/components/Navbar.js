@@ -45,7 +45,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "#046582" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -145,7 +145,7 @@ const Navbar = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar
                   sx={{ bgcolor: green[500] }}
-                  alt={currentUser && currentUser?.displayName.toUpperCase()}
+                  alt={currentUser?.displayName?.toUpperCase()}
                   src="/broken-image.jpg"
                 />
               </IconButton>

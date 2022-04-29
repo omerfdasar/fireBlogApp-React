@@ -18,7 +18,6 @@ import { AuthContext } from "../contexts/AuthContext";
 import { callData, deleteBlog } from "../helpers/firebase";
 import loadingGif from "../assets/loading.gif";
 import chicken from "../assets/16627.jpg";
-import { BlogContext } from "../contexts/BlogContext";
 const Details = ({ item }) => {
   const location = useLocation();
   const params = useParams();

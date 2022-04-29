@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import BlogCard from "../components/BlogCard";
 import { callData } from "../helpers/firebase";
 import errorGif from "../assets/loading.gif";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 const Dashboard = () => {
-  // const [blog, setBlog] = useState([]);
   const { isLoading, blogsDash } = callData();
   // console.log(blogsDash);
   const theme = createTheme();
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      <Typography sx={{ color: "#046582", textAlign: "center", fontSize: 40 }}>
+      ───Dashboard───
+      </Typography>
       {isLoading ? (
         <div className="error">
           <img src={errorGif} />
