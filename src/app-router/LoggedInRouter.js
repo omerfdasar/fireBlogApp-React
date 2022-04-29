@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/AuthContext";
 
 const LoggedInRouter = () => {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser, "priva");
+
   if (currentUser) {
     return <Navigate to="/" replace />;
   }

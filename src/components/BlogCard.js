@@ -41,6 +41,10 @@ const BlogCard = ({ item }) => {
         // height: "100%",
         // display: "flex",
         // flexDirection: "column",
+        // minWidth: 250,
+        // maxWidth: 350,
+        // m: 5,
+        // maxHeight: 700,
         width: 345,
         m: 5,
         maxHeight: 700,
@@ -64,7 +68,6 @@ const BlogCard = ({ item }) => {
         >
           <Typography variant="overline" align="left">
             <div className="IconMail">
-              {/* <AccountCircleIcon sx={{ mx: 3 / 5, alignSelf: "center" }} /> */}
               <i>Author : {item?.user}</i>
             </div>
           </Typography>
@@ -78,7 +81,7 @@ const BlogCard = ({ item }) => {
             {item.title}
           </Typography>
           <Typography>
-            {truncateOverview(item?.content, 160) ??
+            {truncateOverview(item?.content, 250) ??
               "It follows an inquiry into Passenger Play, which allowed games to be played while a car was moving."}
           </Typography>
           <Typography variant="subtitle1" color="primary">
