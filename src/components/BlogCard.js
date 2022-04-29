@@ -38,13 +38,6 @@ const BlogCard = ({ item }) => {
   return (
     <Card
       sx={{
-        // height: "100%",
-        // display: "flex",
-        // flexDirection: "column",
-        // minWidth: 250,
-        // maxWidth: 350,
-        // m: 5,
-        // maxHeight: 700,
         width: 345,
         m: 5,
         maxHeight: 700,
@@ -52,9 +45,8 @@ const BlogCard = ({ item }) => {
     >
       <CardActionArea onClick={validationHandler}>
         <CardMedia
-          sx={{ /* width: 1, */ minHeight: 250, maxHeight: 320 }}
+          sx={{  minHeight: 250, maxHeight: 320 }}
           component="img"
-          // height="70px"
           image={item.image}
           onError={(e) => {
             e.target.onerror = null;

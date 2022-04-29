@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import LoggedInRouter from "../app-router/LoggedInRouter";
 import UpdateBlog from "../pages/UpdateBlog";
+import Footer from "../components/Footer.js";
 const AppRouter = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -36,6 +37,7 @@ const AppRouter = () => {
         </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 };

@@ -17,15 +17,16 @@ import {
 import { AuthContext } from "../contexts/AuthContext";
 import { callData, deleteBlog } from "../helpers/firebase";
 import loadingGif from "../assets/loading.gif";
+import chicken from "../assets/16627.jpg";
+import { BlogContext } from "../contexts/BlogContext";
 const Details = ({ item }) => {
   const location = useLocation();
   const params = useParams();
   const navigate = useNavigate();
-  console.log(item);
 
   const eachBlog = location.state.item;
   // console.log(params.id, "paa");
-  // console.log(eachBlog);
+  console.log(eachBlog);
 
   const { currentUser } = React.useContext(AuthContext);
 
@@ -35,7 +36,7 @@ const Details = ({ item }) => {
   };
 
   const editHandler = () => {
-    navigate(`/update/${params.id}`, { state: { item } });
+    navigate(`/update/${params.id}`, { state: { eachBlog } });
   };
   return (
     <Box
@@ -43,6 +44,7 @@ const Details = ({ item }) => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        mb: 7,
       }}
     >
       <CssBaseline />
@@ -62,6 +64,10 @@ const Details = ({ item }) => {
               width: "100%",
               marginTop: "1.5rem",
               marginBottom: "1.5rem",
+            }}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = chicken;
             }}
           />
           <Typography variant="overline" align="right">

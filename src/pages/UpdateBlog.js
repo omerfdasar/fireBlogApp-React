@@ -13,16 +13,25 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import blok from "../assets/blok.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
 import { addBlog, editBlog } from "../helpers/firebase";
 import { toast } from "react-toastify";
 
-const UpdateBlog = ({ item }) => {
+const UpdateBlog = () => {
   const { blog, setBlog, initialBlog } = useContext(BlogContext);
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  let willUpdatedItem = location.state.eachBlog;
+  setBlog(location.state.eachBlog);
+  console.log(willUpdatedItem, "willUpdatedItem");
+  // {eachBlog} = location.state;
+  // console.log(location.state.eachBlog);
+  // const eachBlog = ;
+  // console.log(eachBlog, "eachBlog");
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
