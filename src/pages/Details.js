@@ -25,7 +25,6 @@ const Details = ({ item }) => {
   const navigate = useNavigate();
 
   const eachBlog = location.state.item;
-  // console.log(params.id, "paa");
   console.log(eachBlog);
 
   const { currentUser } = React.useContext(AuthContext);

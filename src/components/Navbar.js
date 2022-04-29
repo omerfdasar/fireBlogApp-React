@@ -16,8 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../helpers/firebase";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { deepOrange, green, yellow } from "@mui/material/colors";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -45,7 +44,6 @@ const Navbar = () => {
     logOut(navigate);
   };
 
-  // const currentUser = { displayName: "Omerfarukdasar@gmail.com" };
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -142,13 +140,16 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex" }}>
-            <p>{currentUser && currentUser?.displayName}</p>
+            {/* <p>{currentUser && currentUser?.displayName}</p> */}
             <Tooltip title="Menu">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                <Avatar alt="ProfilePhoto" src="https://picsum.photos/200" />
+                <Avatar
+                  sx={{ bgcolor: green[500] }}
+                  alt={currentUser && currentUser?.displayName.toUpperCase()}
+                  src="/broken-image.jpg"
+                />
               </IconButton>
             </Tooltip>
-            {/* <p>{currentUser && currentUser?.displayName}</p> */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
