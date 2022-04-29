@@ -17,9 +17,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BlogContextProvider, { BlogContext } from "../contexts/BlogContext";
 import { addBlog, editBlog } from "../helpers/firebase";
+import { toast } from "react-toastify";
 
 const NewBlog = () => {
-  const { blog, setBlog } = useContext(BlogContext);
+  const { blog, setBlog, initialBlog } = useContext(BlogContext);
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -33,12 +34,10 @@ const NewBlog = () => {
     e.preventDefault();
     console.log(blog);
 
-    if (blog.id) {
-      editBlog(blog);
-    } else {
-      addBlog(blog);
-      navigate("/");
-    }
+    addBlog(blog);
+    setBlog(initialBlog);
+    navigate("/");
+    toast.success("New Blog was successfully added");
   };
 
   const theme = createTheme();

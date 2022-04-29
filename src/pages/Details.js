@@ -35,7 +35,7 @@ const Details = ({ item }) => {
   };
 
   const editHandler = () => {
-    navigate("/details/" + params.id);
+    navigate(`/update/${params.id}`, { state: { item } });
   };
   return (
     <Box
@@ -77,19 +77,23 @@ const Details = ({ item }) => {
           >
             {eachBlog.content}
           </Typography>
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
-            <Button size="small" onClick={editHandler}>
-              Edit
-            </Button>
-            <Button size="small" onClick={deleteHandler}>
-              Delete
-            </Button>
-          </Stack>
+
+          {currentUser.displayName == eachBlog.user && (
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+              <Button size="small" onClick={editHandler}>
+                Edit
+              </Button>
+
+              <Button size="small" onClick={deleteHandler}>
+                Delete
+              </Button>
+            </Stack>
+          )}
         </Container>
       )}
     </Box>

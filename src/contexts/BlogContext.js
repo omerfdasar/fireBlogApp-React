@@ -16,7 +16,7 @@ const BlogContextProvider = (props) => {
   }); */
 
   return (
-    <BlogContext.Provider value={{ blog, setBlog }}>
+    <BlogContext.Provider value={{ blog, setBlog, initialBlog }}>
       {props.children}
     </BlogContext.Provider>
   );
