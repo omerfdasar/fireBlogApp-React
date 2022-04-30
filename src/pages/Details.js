@@ -79,7 +79,7 @@ const Details = () => {
             {eachBlog.content}
           </Typography>
 
-          {currentUser.displayName === eachBlog.user && (
+          {currentUser.email === eachBlog.user && (
             <Stack
               sx={{ pt: 4 }}
               direction="row"

@@ -40,7 +40,7 @@ const Dashboard = () => {
           <img src={errorGif} alt="loadingGif" />
         </div>
       ) : blogsDash?.length === 0 ? (
-        <h1>DATA NOT FOUND</h1>
+        <h1 style={{ textAlign: "center" }}>DATA NOT FOUND</h1>
       ) : (
         <ThemeProvider theme={theme}>
           <Box
