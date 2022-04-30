@@ -10,6 +10,7 @@ a {
 }
 .IconMail {
   display: flex;
+  flex-direction: column;
   align-self: center;
   justify-content: flex-start;
 }

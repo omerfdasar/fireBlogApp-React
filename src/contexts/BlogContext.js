@@ -2,7 +2,13 @@ import { createContext, useState } from "react";
 
 export const BlogContext = createContext();
 
-const initialBlog = { title: "", image: "", context: "", user: "" };
+const initialBlog = {
+  title: "",
+  image: "",
+  context: "",
+  user: "",
+  published_date: Date.now(),
+};
 
 const BlogContextProvider = (props) => {
   const [blog, setBlog] = useState(initialBlog);

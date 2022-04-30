@@ -1,12 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  getDatabase,
-  ref,
-  set,
-  push,
-  remove,
-  update,
-} from "firebase/database";
+import { getDatabase, ref, set, push, remove, update } from "firebase/database";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -103,6 +96,7 @@ export const addBlog = (blog) => {
     image: blog.image,
     content: blog.content,
     user: blog.user,
+    publishedDate: blog.publishedDate,
   });
 };
 

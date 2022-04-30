@@ -15,7 +15,7 @@ import chicken from "../assets/16627.jpg";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import { pink } from "@mui/material/colors";
-
+import moment from "moment";
 const BlogCard = ({ item }) => {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const BlogCard = ({ item }) => {
     if (string.length <= maxLength) return string;
     return `${string.substring(0, maxLength)} ...`;
   };
-  // console.log(item);
+  console.log(item);
   // console.log(currentUser);
   return (
     <Card
@@ -41,7 +41,7 @@ const BlogCard = ({ item }) => {
     >
       <CardActionArea onClick={validationHandler}>
         <CardMedia
-          sx={{  minHeight: 250, maxHeight: 320 }}
+          sx={{ minHeight: 250, maxHeight: 320 }}
           component="img"
           image={item.image}
           onError={(e) => {
@@ -53,12 +53,17 @@ const BlogCard = ({ item }) => {
           sx={{
             flexGrow: 1,
             backgroundColor: "#E7E6F5",
-            height: 300,
+            height: 330,
           }}
         >
           <Typography variant="overline" align="left">
             <div className="IconMail">
               <i>Author : {item?.user}</i>
+
+              <i style={{ fontSize: 10, justifySelf: "flex-end" }}>
+                {moment(item?.publishedDate).format("MMM DD, YYYY ")}
+                {moment(item?.publishedDate).format("hh:mm")}
+              </i>
             </div>
           </Typography>
           <Typography

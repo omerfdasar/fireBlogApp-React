@@ -23,7 +23,7 @@ const NewBlog = () => {
     const { name, value } = e.target;
     const { email } = currentUser;
 
-    setBlog({ ...blog, [name]: value, user: email });
+    setBlog({ ...blog, [name]: value, user: email, publishedDate: Date.now() });
   };
   const handleSubmit = (e) => {
     e.preventDefault();

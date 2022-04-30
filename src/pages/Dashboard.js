@@ -30,7 +30,6 @@ const Dashboard = () => {
     });
   }, []);
 
-  // const { isLoading, blogsDash } = callData();
   return (
     <div>
       <Typography sx={{ color: "#046582", textAlign: "center", fontSize: 40 }}>

@@ -60,7 +60,11 @@ const Details = ({ item }) => {
           <Typography variant="overline" align="right">
             <i>
               Author : {eachBlog.user}
-              {/* {moment(data[0]?.published_date).format("MMM DD, YYYY")} */}
+
+              {/* {moment(item.published_date).format("MMM DD, YYYY")} */}
+            </i>
+            <i>
+              {eachBlog.publishedDate}
             </i>
           </Typography>
           <Typography
