@@ -7,7 +7,7 @@ const initialBlog = {
   image: "",
   context: "",
   user: "",
-  published_date: Date.now(),
+  published_date: "",
 };
 
 const BlogContextProvider = (props) => {

@@ -7,7 +7,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { deleteBlog } from "../helpers/firebase";
 import loadingGif from "../assets/loading.gif";
 import chicken from "../assets/16627.jpg";
-const Details = ({ item }) => {
+import moment from "moment";
+const Details = () => {
   const location = useLocation();
   const params = useParams();
   const navigate = useNavigate();
@@ -41,7 +42,12 @@ const Details = ({ item }) => {
         </Container>
       ) : (
         <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            textAlign={"center"}
+          >
             {eachBlog.title}
           </Typography>
           <img
@@ -58,13 +64,11 @@ const Details = ({ item }) => {
             }}
           />
           <Typography variant="overline" align="right">
+            <i>Author : {eachBlog.user} &nbsp;</i> ||{" "}
             <i>
-              Author : {eachBlog.user}
-
-              {/* {moment(item.published_date).format("MMM DD, YYYY")} */}
-            </i>
-            <i>
-              {eachBlog.publishedDate}
+              &nbsp;
+              {moment(eachBlog?.publishedDate).format("MMM DD, YYYY ")}
+              {moment(eachBlog?.publishedDate).format("hh:mm")}
             </i>
           </Typography>
           <Typography
