@@ -1,4 +1,6 @@
-# Project-011 : FireBlog App (RC-11)
+# Project: FireBlog App
+
+## Link : "https://fireblog-reactproject.netlify.app/"
 
 ## Description
 
@@ -13,7 +15,7 @@ Project aims to create a FireBlog App.
 ```
 011 - FireBlog App (folder)
 |
-|----readme.md         
+|----readme.md
 SOLUTION
 ├── public
 │     └── index.html
@@ -83,12 +85,4 @@ Build a Register FireBlog App using ReactJS.
 
 - Step 3 : You can use css frameworks like Bootstrap, Semantic UI, Material UI.
 
-- Step 4 : You can view sample app on https://eds-fireblog.herokuapp.com/.
-
-- Step 5 : Add project gif to your project and README.md file.
-
-## Notes
-
-- You can add additional functionalities to your app.
-
-**<p align="center">&#9786; Happy Coding &#9997;</p>**
+- Step 4 : Add project gif to your project and README.md file.
