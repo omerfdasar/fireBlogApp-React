@@ -20,15 +20,13 @@ const UpdateBlog = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let willUpdatedItem = location.state.eachBlog;
 
   React.useEffect(() => {
     setBlog(location.state.eachBlog);
   }, [location.state.eachBlog, setBlog]);
-  console.log(willUpdatedItem, "willUpdatedItem");
   // {eachBlog} = location.state;
   // console.log(location.state.eachBlog);
-  // const eachBlog = ;
+
   // console.log(eachBlog, "eachBlog");
   const handleChange = (e) => {
     e.preventDefault();
@@ -83,7 +81,7 @@ const UpdateBlog = () => {
               id="title"
               label="Title"
               name="title"
-              value={blog.title}
+              value={blog?.title}
               onChange={handleChange}
             />
 
@@ -95,7 +93,7 @@ const UpdateBlog = () => {
               label="Image URL"
               type="text"
               id="image"
-              value={blog.image}
+              value={blog?.image}
               onChange={handleChange}
             />
             <TextField
@@ -108,7 +106,7 @@ const UpdateBlog = () => {
               id="content"
               multiline
               rows={10}
-              value={blog.content}
+              value={blog?.content}
               onChange={handleChange}
             />
 
